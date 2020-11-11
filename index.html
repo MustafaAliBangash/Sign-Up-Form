@@ -1,0 +1,139 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+           $(document).ready(function(){
+           $("#btnsend").click(function(){
+               $.ajax({
+                   url:"http://192.168.1.108:8000/add",
+                   type: "POST",
+                   data: JSON.stringify({
+                       "id":01,
+                       "contents": $('#student').val()
+                   }),
+                   
+               });
+           });
+       });
+         function BindTable()
+{
+    
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8000/",                
+        success: function (msg) {            ;                        
+            $.each(msg, function (index) { 
+                var row = '<tr><td> ' + msg[index].id + ' </td> <td> ' + msg[index].name + ' </td></tr>';                                                            
+                $("#tbDetails").append(row);
+				console.log(msg);
+            });             
+        }
+    });
+
+}
+
+    </script>
+    <title>SIGN UP</title>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        body, html {     
+            height: 100%;
+            margin: 0; 
+           font-family: Arial, Helvetica, sans-serif;
+           
+         }
+       
+         * {box-sizing: border-box; }
+        h1 {
+            text-align: center;
+        }
+        .input-container {
+            display: -ms-flexbox;
+            display: flex;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .icon {
+            padding: 10px;
+            background:dodgerblue;
+            color: white;
+            min-width: 50px;
+            text-align: center;
+        }
+        .input.field {
+           max-width: 100%; 
+            padding: 10px;
+            outline: none;
+        }
+        .input.field:focus {
+            border: 2px solid dodgerblue;
+        }
+        .btn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .btn:hover{
+            opacity: 1;
+        }
+        .bg {
+           background-image: url("image/po78JH.jpg");
+            height: 105%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position:relative ;
+        }
+    </style>
+    
+</head>
+<div class="bg">
+<body>
+  <div class="bg">
+    <form action="http://192.168.1.108:8000" style="max-width: 500px;margin: auto;">
+        <h1><i>Started your account
+            with Mustafa Ali Bangash</i></h1>
+        <h2><b>Sign Up Form</b></h2>
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input class="input-field" type="text" placeholder="Username" name="username" size="53">
+        </div>    
+        <div class="input-container">
+            <i class="fa fa-envelope icon"></i>
+            <input class="input-field" type="email" placeholder="Email" name="email" size="53">
+        </div>
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input class="input-field" type="password" placeholder="Password" name="password" size="53">
+        </div>
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input class="input-field" type="password" placeholder="Re-password" name="password" size="53">
+        </div>
+       
+    
+        <button type="submit" class="btn">SIGN UP</button>
+        
+    </form> 
+           
+</body>
+</div>
+</html>
